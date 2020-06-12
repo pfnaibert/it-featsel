@@ -1,0 +1,101 @@
+--- 
+title: "Figures of Index Tracking" 
+date: '`r format(Sys.time(), "%d, %B, %Y")`'
+author: "Paulo Ferreira Naibert"
+--- 
+
+```{r, setup, include=FALSE}
+# packages
+library(knitr)
+knitr::opts_chunk$set(fig.height=5, fig.width=9.5) 
+
+# functions
+source("./funs-ports-IT.R")
+source("./funs-plots.R")
+```
+
+# IBOV 
+
+```{r, setup_IBOV}
+# variables
+J <- 250; win1 <- seq(1, J)
+W <- 250
+
+# Import data
+ports  <- readRDS("./data/ibov-rps.rds")
+mkt    <- ports$mkt[-win1]
+mkt.ac <- fun.retac(ports$mkt[-win1])
+rps.ac <- ports$ac.rps
+rpn.ac <- ports$ac.rpn
+
+portnames <- unique(colnames(ports$rps))
+n <- length(portnames); n
+```
+
+## Figures
+
+```{r, figures_IBOV, echo=FALSE}
+for(i in 1:n)
+{
+
+#########################################
+cat("Cumulative Returns for IBOV", portnames[i])
+
+plot.ac2(cbind(mkt.ac, rps.ac[,grep(portnames[i], colnames(rps.ac))]), "IBOV",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio without TC") )
+    
+plot.ac2(cbind(mkt.ac, rpn.ac[,grep(portnames[i], colnames(rps.ac))]), "IBOV",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio with TC") )
+
+#########################################
+cat("Volatility for IBOV", portnames[i])
+
+plot.vol(cbind(mkt, ports$rps[,grep(portnames[i], colnames(rps.ac))]),
+        "IBOV", paste("SD of returns of the", portnames[i] , "portfolio without TC (trailing 250 days)"), W)
+
+plot.vol(cbind(mkt, ports$rpn[,grep(portnames[i], colnames(rps.ac))]),
+        "IBOV", paste("SD of returns of the", portnames[i], "portfolio with TC (trailing 250 days)"), W)
+}
+```
+
+# SP500 
+
+```{r, setup_SPY}
+J <- 500; win1 <- seq(1, J)
+W <- 250
+
+# Import
+ports  <- readRDS("./data/spy5-rps.rds")
+mkt    <- ports$mkt[-win1]
+mkt.ac <- fun.retac(ports$mkt[-win1])
+rps.ac <- ports$ac.rps
+rpn.ac <- ports$ac.rpn
+
+portnames <- unique(colnames(ports$rps))
+n <- length(portnames); n
+```
+
+## SP500 Figures
+```{r, figures_SPY, echo=FALSE}
+for(i in 1:n)
+{
+
+#########################################
+cat("Cumulative Returns for SP500", portnames[i])
+
+plot.ac2(cbind(mkt.ac, rps.ac[,grep(portnames[i], colnames(rps.ac))]), "SP500",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio without TC") )
+
+plot.ac2(cbind(mkt.ac, rpn.ac[,grep(portnames[i], colnames(rps.ac))]), "SP500",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio with TC") )
+
+#########################################
+cat("Volatility for SP500", portnames[i])
+
+plot.vol(cbind(mkt, ports$rps[,grep(portnames[i], colnames(rps.ac))]),
+        "SP500", paste("SD of returns of the", portnames[i], "portfolio without TC (trailing 250 days)"), W)
+
+plot.vol(cbind(mkt, ports$rpn[,grep(portnames[i], colnames(rps.ac))]),
+        "SP500", paste("SD of returns of the", portnames[i], "portfolio with TC (trailing 250 days)"), W)
+}
+
