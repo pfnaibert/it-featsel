@@ -18,85 +18,36 @@ rps.ac <- ports$ac.rps
 rpn.ac <- ports$ac.rpn
 
 #####################################
-id1 <- grep("las.15", colnames(rps.ac))
-id2 <- grep("las.20", colnames(rps.ac))
-id3 <- grep("bwd.20", colnames(rps.ac))
-id4 <- grep("fwd.20", colnames(rps.ac))
+portnames <- c("las.15", "las.20", "bwd.20", "fwd.20")
+n <- length(portnames); n
 
 #####################################
-# PLOTS 
-source("./funs-plots.R")
-
-#####################################
-# las.15
-par(mfrow = c(2,1))
+# FIGURES
+for(i in 1:n)
 {
-plot.ac2(cbind(mkt.ac, rps.ac[,id1]), "IBOV",
-         "Cumulative Returns of the las.15 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id1]), "IBOV",
-         "Cumulative Returns of the las.15 Portfolio with TC" )
-}
-
+pdf(file = paste0("../FIGS/IBOV-retac-", portnames[i], ".pdf"), width=8, height=7*sqrt(2))
 par(mfrow = c(2,1))
+# par(mar=c(2.5, 2, 2, 0.2))
+# par(mar=c(4, 4, 2, 0.4))
 {
-plot.vol(cbind(mkt, ports$rps[,id1]), "IBOV", "las.15", W)
-plot.vol(cbind(mkt, ports$rpn[,id1]), "IBOV", "las.15 TC", W)
+plot.ac2(cbind(mkt.ac, rps.ac[,grep(portnames[i], colnames(rps.ac))]), "IBOV",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio without TC") )
+plot.ac2(cbind(mkt.ac, rpn.ac[,grep(portnames[i], colnames(rps.ac))]), "IBOV",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio with TC") )
 }
-
-#####################################
-# las.20
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id2]), "IBOV",
-         "Cumulative Returns of the las.20 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id2]), "IBOV",
-         "Cumulative Returns of the las.20 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id2]), "IBOV", "las.20", W)
-plot.vol(cbind(mkt, ports$rpn[,id2]), "IBOV", "las.20 TC", W)
-}
-
-#####################################
-# bwd.20
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id3]), "IBOV",
-         "Cumulative Returns of the bwd.20 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id3]), "IBOV",
-         "Cumulative Returns of the bwd.20 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id3]), "IBOV", "bwd.20", W)
-plot.vol(cbind(mkt, ports$rpn[,id3]), "IBOV", "bwd.20 TC", W)
-}
-
-#####################################
-# fwd.20
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id4]), "IBOV",
-         "Cumulative Returns of the fwd.20 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id4]), "IBOV",
-         "Cumulative Returns of the fwd.20 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id4]), "IBOV", "fwd.20", W)
-plot.vol(cbind(mkt, ports$rpn[,id4]), "IBOV", "fwd.20 TC", W)
-}
-
-
-#############################################
-# SAVES
-pdf(file = paste0("../escrita/figs/fig-", indexname, "-retac-", i, ".pdf"), width = 2*5, height=5)
-plot.vol(rps[,ids[i,]], indexname, titles2[i], W)
 dev.off()
+
+pdf(file = paste0("../FIGS/IBOV-vol-", portnames[i], ".pdf"), width = 8, height=7*sqrt(2))
+par(mfrow = c(2,1))
+# par(mar=c(4, 4, 2, 0.4))
+{
+plot.vol(cbind(mkt, ports$rps[,grep(portnames[i], colnames(rps.ac))]),
+        "IBOV", paste("SD of returns of the", portnames[i] , "portfolio without TC (trailing 250 days)"), W)
+plot.vol(cbind(mkt, ports$rpn[,grep(portnames[i], colnames(rps.ac))]),
+        "IBOV", paste("SD of returns of the", portnames[i], "portfolio with TC (trailing 250 days)"), W)
+}
+dev.off()
+}
 
 #############################################
 cat(" \n ***** FIM DO SCRIPT ****** \n")

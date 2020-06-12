@@ -18,107 +18,40 @@ rps.ac <- ports$ac.rps
 rpn.ac <- ports$ac.rpn
 
 #####################################
-id1 <- grep("bwd.30", colnames(rps.ac)); id1
-id2 <- grep("bwd.40", colnames(rps.ac))
-id3 <- grep("fwd.30", colnames(rps.ac))
-id4 <- grep("fwd.40", colnames(rps.ac))
-id5 <- grep("las.20", colnames(rps.ac))
+portnames <- c("bwd.30", "bwd.40", "fwd.30", "fwd.40", "las.20")
+n <- length(portnames); n
 
 #####################################
 # PLOTS 
 source("./funs-plots.R")
 
 #####################################
-# las.20
-par(mfrow = c(2,1))
+# FIGURES
+for(i in 1:n)
 {
-plot.ac2(cbind(mkt.ac, rps.ac[,id5]), "SP500",
-         "Cumulative Returns of the las.20 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id5]), "SP500",
-         "Cumulative Returns of the las.20 Portfolio with TC" )
-}
-
+pdf(file = paste0("../FIGS/SP500-retac-", portnames[i], ".pdf"), width=8, height=7*sqrt(2))
 par(mfrow = c(2,1))
+# par(mar=c(2.5, 2, 2, 0.2))
+# par(mar=c(4, 4, 2, 0.4))
 {
-plot.vol(cbind(mkt, ports$rps[,id5]), "SP500", "las.20", W)
-plot.vol(cbind(mkt, ports$rpn[,id5]), "SP500", "las.20 TC", W)
+plot.ac2(cbind(mkt.ac, rps.ac[,grep(portnames[i], colnames(rps.ac))]), "SP500",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio without TC") )
+plot.ac2(cbind(mkt.ac, rpn.ac[,grep(portnames[i], colnames(rps.ac))]), "SP500",
+         paste("Cumulative Returns of the", portnames[i], "Portfolio with TC") )
 }
-
-#####################################
-# bwd.30
-
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id1]), "SP500",
-         "Cumulative Returns of the bwd.30 Portfolio without TC" )
-plot.ac2(cbind(mkt.ac, rpn.ac[,id1]), "SP500",
-         "Cumulative Returns of the bwd.30 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id1]), "SP500", "bwd.30", W)
-plot.vol(cbind(mkt, ports$rpn[,id1]), "SP500", "bwd.30 TC", W)
-}
-
-#####################################
-# bwd.40
-
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id2]), "SP500",
-         "Cumulative Returns of the bwd.40 Portfolio without TC" )
-             
-plot.ac2(cbind(mkt.ac, rpn.ac[,id2]), "SP500",
-         "Cumulative Returns of the bwd.40 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id2]), "SP500", "bwd.40", W)
-plot.vol(cbind(mkt, ports$rpn[,id2]), "SP500", "bwd.40 TC", W)
-}
-
-#####################################
-# fwd.30
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id3]), "SP500",
-         "Cumulative Returns of the fwd.30 Portfolio without TC" )
-             
-plot.ac2(cbind(mkt.ac, rpn.ac[,id3]), "SP500",
-         "Cumulative Returns of the fwd.30 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id3]), "SP500", "fwd.30", W)
-plot.vol(cbind(mkt, ports$rpn[,id3]), "SP500", "fwd.30 TC", W)
-}
-
-#####################################
-# fwd.40
-
-par(mfrow = c(2,1))
-{
-plot.ac2(cbind(mkt.ac, rps.ac[,id4]), "SP500",
-         "Cumulative Returns of the fwd.40 Portfolio without TC" )
-             
-plot.ac2(cbind(mkt.ac, rpn.ac[,id4]), "SP500",
-         "Cumulative Returns of the fwd.40 Portfolio with TC" )
-}
-
-par(mfrow = c(2,1))
-{
-plot.vol(cbind(mkt, ports$rps[,id4]), "SP500", "fwd.40", W)
-plot.vol(cbind(mkt, ports$rpn[,id4]), "SP500", "fwd.40 TC", W)
-}
-
-#############################################
-# SAVES
-pdf(file = paste0("../escrita/figs/fig-", indexname, "-retac-", i, ".pdf"), width = 2*5, height=5)
-plot.vol(rps[,ids[i,]], indexname, titles2[i], W)
 dev.off()
+
+pdf(file = paste0("../FIGS/SP500-vol-", portnames[i], ".pdf"), width = 8, height=7*sqrt(2))
+par(mfrow = c(2,1))
+# par(mar=c(4, 4, 2, 0.4))
+{
+plot.vol(cbind(mkt, ports$rps[,grep(portnames[i], colnames(rps.ac))]),
+        "SP500", paste("SD of returns of the", portnames[i], "portfolio without TC (trailing 250 days)"), W)
+plot.vol(cbind(mkt, ports$rpn[,grep(portnames[i], colnames(rps.ac))]),
+        "SP500", paste("SD of returns of the", portnames[i], "portfolio with TC (trailing 250 days)"), W)
+}
+dev.off()
+}
 
 #############################################
 cat(" \n ***** FIM DO SCRIPT ****** \n")
