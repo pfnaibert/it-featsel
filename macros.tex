@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS
+% ------------------------
+% 2017/10/13 Sex 11:34:37 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% produto interno na forma <x,y>
+\DeclarePairedDelimiterX\innerp[2]{\langle}{\rangle}{#1,#2}
+
+% curly braces para fazer $\{x_n\}$ mais rápido.
+\renewcommand{\cb}[1]{\{#1\}}
+
+% Atalhos para notação de conjuntos dos números reais, naturais, etc
+% \renewcommand{\R}{\mathbb{R}}
+\newcommand{\model}{\ensuremath{\mathcal{M}}}
+\newcommand{\RS}{\ensuremath{R^2}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}} 
+\newcommand{\Rn}{\ensuremath{\mathbb{R}^n}} 
+\newcommand{\Rm}{\ensuremath{\mathbb{R}^m}} 
+\newcommand{\Rp}{\ensuremath{\mathbb{R}^p}} 
+\newcommand{\I}{\ensuremath{\mathbb{R}\setminus\mathbb{Q}}}
+
+\newcommand{\md}{\ensuremath{\mathcal{D}}}
+
+% atalhos para outros operadores matemáticos
+\DeclareMathOperator{\lagr}{\mathcal{L}}
+
+\DeclareMathOperator{\eu}{\mathrm{e}}
+\DeclareMathOperator{\de}{\mathrm{d}}
+\DeclareMathOperator{\up}{\uparrow}
+\DeclareMathOperator{\dn}{\downarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Não faço a mínima ideia o que esse comandos fazem
+\renewcommand{\cancel}{\color{red}}
+
+\newcommand{\encircle}[1]{%
+	\tikz[baseline= (X.base)] 
+	\node(X)[draw, shape=circle, inner sep=0]{\strut #1};}
+
+% ========================================
+% Derivadas
+
+\newcommand{\dpf}[2]{\frac{d#1}{d#2}}
+\newcommand{\dsf}[2]{\frac{d^2#1}{d#2^2}}
+
+\newcommand{\opt}[1]{{#1}^{*}}
+
+% ========================================
+% Derivadas Parciais
+
+\newcommand{\pdf}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\psdf}[2]{\frac{\partial^2#1}{\partial#2^2}}
+\newcommand{\pcdf}[3]{\frac{\partial^2#1}{\partial#2 \partial#3}}
+
+% ========================================
+% Integrais
+
+% ========================================
+% Limites
+
+% ========================================
+% função valor
+
+\newcommand{\vth}{V_{\theta}}
+
+% GREEK LETTERS
+\newcommand{\ga}{\ensuremath{\alpha}} 
+\newcommand{\gab}{\ensuremath{\boldsymbol{\alpha}}} 
+\newcommand{\gb}{\ensuremath{\beta}} 
+\newcommand{\gbb}{\ensuremath{\boldsymbol{\beta}}} 
+\newcommand{\G}{\ensuremath{\Gamma}} 
+\newcommand{\gg}{\ensuremath{\gamma}} 
+\newcommand{\D}{\ensuremath{\Delta}} 
+\newcommand{\gl}{\ensuremath{\lambda}} 
+\newcommand{\gL}{\ensuremath{\Lambda}} 
+
+\newcommand{\gSi}{\ensuremath{\Sigma^{-1}}} 
+\newcommand{\gS}{\ensuremath{\Sigma}} 
+
+\newcommand{\gs}{\ensuremath{\sigma}} 
+\newcommand{\gsh}{\ensuremath{\hat{\sigma}}} 
+\newcommand{\gss}{\ensuremath{\sigma^2}} 
+\newcommand{\gssh}{\ensuremath{\hat{\sigma}^2}} 
+
+\newcommand{\gSib}{\ensuremath{\boldsymbol{\Sigma}^{-1}}} 
+\newcommand{\gSb}{\ensuremath{\boldsymbol{\Sigma}}} 
+\newcommand{\gsb}{\ensuremath{\boldsymbol{\sigma}}} 
+
+\newcommand{\gib}{\ensuremath{\boldsymbol{\iota}}} 
+\newcommand{\gi}{\ensuremath{\iota}}
+
+
+
+
+\newcommand{\err}{\ensuremath{\varepsilon}} 
+
+\newcommand{\gO}{\ensuremath{\Omega}} 
+
+% ==========================================================
+% Comandos Novos
+
+\newcommand{\co}[1]{\citeonline{#1}}
+
+% ===========================================================
+% Atalhos para cores:
+% no texto
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\newcommand{\mbs}[1]{\boldsymbol{#1}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+
+% \newcommand{\hl}[1]{\colorbox{yellow}{#1}}
+

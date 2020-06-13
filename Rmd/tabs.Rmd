@@ -1,0 +1,35 @@
+--- 
+title: "Cumulative Net Returns" 
+date: '`r format(Sys.time(), "%d, %B, %Y")`'
+author: "Paulo Ferreira Naibert"
+--- 
+
+```{r, setup, include=FALSE}
+# packages
+library(knitr)
+knitr::opts_chunk$set(fig.height=5, fig.width=9.5) 
+
+# functions
+source("../funs/funs-ports-IT.R")
+```
+
+```{r, ibov.tables}
+#####################################
+# IBOV
+
+ibov <- readRDS("../data/ibov-rps.rds")
+tab1 <- tab.rps(ibov, J=250); kable(tab1)
+ibov.oos <- readRDS("../R/vars-ibov/ibov-tab-oos.rds")
+kable(ibov.oos)
+```
+
+
+```{r, spy.tables}
+spy5 <- readRDS("../data/spy5-rps.rds")
+tab2 <- tab.rps(spy5, J=500); kable(tab2)
+spy.oos <- readRDS("../R/vars-sp/spy5-tab-oos.rds")
+kable(spy.oos)
+```
+
+
+
