@@ -1,0 +1,56 @@
+--- 
+title: "Volatility of Net Returns" 
+date: '`r format(Sys.time(), "%d, %B, %Y")`'
+author: "Paulo Ferreira Naibert"
+--- 
+
+```{r, setup, include=FALSE}
+# packages
+library(knitr)
+knitr::opts_chunk$set(fig.height=5, fig.width=9.5) 
+
+# functions
+source("../funs/funs-ports-IT.R")
+source("../funs/funs-plots.R")
+```
+
+```{r, setup_DATA}
+# variables
+J1 <- 250; win1 <- seq(1, J1)
+J2 <- 500; win2 <- seq(1, J2)
+W <- 250
+
+# Import data
+ibov  <- readRDS("../data/ibov-rps.rds")
+spy   <- readRDS("../data/spy5-rps.rds")
+
+# 
+ibov.mkt <- ibov$mkt[-win1]
+spy.mkt  <- spy$mkt[-win2]
+
+ibov.names <- sort(unique(colnames(ibov$rps)))
+spy.names  <- sort(unique(colnames(spy$rps)))
+```
+
+# IBOV
+```{r, vol.rpn.IBOV, echo=FALSE}
+
+for(i in 1:length(ibov.names))
+{
+cat("Volatility of  Net Returns for IBOV", ibov.names[i])
+plot.vol(cbind(ibov.mkt, ibov$rpn[,grep(ibov.names[i], colnames(ibov$rpn))]),
+        "IBOV", paste("SD of returns of the", ibov.names[i] , "portfolio without TC (trailing 250 days)"), W)
+}
+```
+
+# SP500
+```{r, vol.rpn.spy, echo=FALSE}
+
+for(i in 1:length(spy.names))
+{
+cat("Volatility of  Net Returns for SP500", spy.names[i])
+plot.vol(cbind(spy.mkt, spy$rpn[,grep(spy.names[i], colnames(spy$rpn))]),
+        "SP500", paste("SD of returns of the", spy.names[i] , "portfolio without TC (trailing 250 days)"), W)
+}
+```
+

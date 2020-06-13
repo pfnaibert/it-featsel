@@ -1,0 +1,60 @@
+--- 
+title: "Cumulative Raw Returns" 
+date: '`r format(Sys.time(), "%d, %B, %Y")`'
+author: "Paulo Ferreira Naibert"
+--- 
+
+```{r, setup, include=FALSE}
+# packages
+library(knitr)
+knitr::opts_chunk$set(fig.height=5, fig.width=9.5) 
+
+# functions
+source("../funs/funs-ports-IT.R")
+source("../funs/funs-plots.R")
+```
+
+```{r, setup_DATA}
+# variables
+J1 <- 250; win1 <- seq(1, J1)
+J2 <- 500; win2 <- seq(1, J2)
+W <- 250
+
+# Import data
+IBOV  <- readRDS("../data/ibov-rps.rds")
+SPY   <- readRDS("../data/spy5-rps.rds")
+
+# 
+ibov.mkt    <- IBOV$mkt[-win1]
+ibov.mkt.ac <- fun.retac(IBOV$mkt[-win1])
+ibov.rps.ac <- IBOV$ac.rps
+
+spy.mkt    <- SPY$mkt[-win2]
+spy.mkt.ac <- fun.retac(SPY$mkt[-win2])
+spy.rps.ac <- SPY$ac.rps
+
+ibov.names <- sort(unique(colnames(IBOV$rps)))
+spy.names  <- sort(unique(colnames(SPY$rps)))
+```
+
+# IBOV
+```{r, rps.ac.IBOV, echo=FALSE}
+
+for(i in 1:length(ibov.names))
+{
+cat("Cumulative Raw Returns for IBOV", ibov.names[i])
+plot.ac2(cbind(ibov.mkt.ac, ibov.rps.ac[,grep(ibov.names[i], colnames(ibov.rps.ac))]), "IBOV",
+         paste("Cumulative Raw Returns of the", ibov.names[i], "Portfolio (Brazilian Data)") )
+}
+```
+
+# SP500
+```{r, rps.ac.SPY, echo=FALSE}
+
+for(i in 1:length(spy.names))
+{
+cat("Cumulative Raw Returns for SP500", spy.names[i])
+plot.ac2(cbind(spy.mkt.ac, spy.rps.ac[,grep(spy.names[i], colnames(spy.rps.ac))]), "SP500",
+         paste("Cumulative Raw Returns of the", spy.names[i], "Portfolio (American Data)") )
+}
+```
