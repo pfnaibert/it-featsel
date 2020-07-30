@@ -18,14 +18,15 @@ rps.ac <- ports$ac.rps
 rpn.ac <- ports$ac.rpn
 
 #####################################
-portnames <- c("las.20", "bwd.40", "fwd.20")
+portnames <- unique(colnames(rpn.ac))
+portnames1 <- gsub('\\.', "-", portnames)
 n <- length(portnames); n
 
 #####################################
 # FIGURES
 for(i in 1:n)
 {
-pdf(file = paste0("../figs/SP500-retac-", portnames[i], ".pdf"), width=8, height=7*sqrt(2))
+pdf(file = paste0("../figs/SP500-retac-", portnames1[i], ".pdf"), width=8, height=7*sqrt(2))
 par(mfrow = c(2,1))
 # par(mar=c(2.5, 2, 2, 0.2))
 # par(mar=c(4, 4, 2, 0.4))
