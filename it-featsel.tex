@@ -1,7 +1,10 @@
-\documentclass[preprint,authoryear,review,12pt]{elsarticle}
-\journal{Quantitative Review of Economics and Finance}
+\documentclass[preprint, doubleblind, authoryear,10pt]{elsarticle}
+% \documentclass[doubleblind, authoryear,10pt]{elsarticle}
+% \documentclass[review, authoryear,12pt]{elsarticle}
+% \documentclass[12pt, a4paper, oneside, article]{article}
+\journal{TBD}
 
-\usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{a4wide}
 \usepackage{fullpage}
 
@@ -14,12 +17,11 @@
 \usepackage{amsmath, amsfonts, amssymb}
 
 \usepackage{lscape}
-\usepackage{graphicx,color} % Para escrever em cores
+\usepackage{graphicx} 
 \usepackage{graphics}
 \usepackage{subfig}
 \usepackage{ae}
 \usepackage{pdflscape}
-\usepackage{url}
 \usepackage{setspace}
 \usepackage{tabularx}
 \usepackage{dcolumn}
@@ -27,22 +29,14 @@
 \usepackage{supertabular}
 \usepackage{multirow}
 \usepackage{longtable}
-\usepackage{geometry}
 \usepackage{rotating}
 \usepackage{color}
 \usepackage{xcolor}
-\usepackage{tcolorbox}
-
-\interfootnotelinepenalty=10000
-\raggedbottom
-
-\newcommand{\m}[3]{\multicolumn{#1}{#2}{#3}}
-\newcolumntype{d}[1]{D{.}{.}{#1}}
-
-\def\mathbi#1{\textbf{\em #1}}
-\newcommand{\mat}[1]{\mbox{\boldmath{$#1$}}}
-%%% Nota: abrir com Western (ISO Latin 1) %%%%%
-
+\usepackage{bm}
+% \usepackage{tcolorbox}
+\usepackage{hyperref} % referencias dentro do texo (*QUEBRA MEMOIR*)
+\hypersetup{colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=red,}
+\usepackage{url}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -953,159 +947,11 @@ The last three columns of the Table shows the alfa, beta, and $R^2$ (intercept i
 \end{singlespace}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% IBOV figs
-\clearpage
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 10 assets without TC (IBOV)}
-\label{fig:ibov:ret:10a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-1.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-4.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-7.pdf}
-
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 15 assets without TC (IBOV)}
-\label{fig:ibov:ret:15a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-2.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-5.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-8.pdf}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 20 assets without TC (IBOV)}
-\label{fig:ibov:ret:20a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-3.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-6.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-retac-9.pdf}
-\end{figure}
-
-{\footnotesize
-\textbf{Note for Figures \ref{fig:ibov:ret:10a} - \ref{fig:ibov:ret:20a}}:
-In this Figures the benchmark is the Bovespa Index (IBOV).
-The Figures shows cumulative returns of each portfolio with a specified rebalancing period and a number of asssets.
-Those Figures also show in pointed lines the difference between those cumulative returns and the index.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% IBOv VOL
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 10 assets (IBOV)}
-\label{fig:ibov:vol:10a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-1.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-4.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-7.pdf}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 15 assets (IBOV)}
-\label{fig:ibov:vol:15a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-2.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-5.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-8.pdf}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 20 assets (IBOV)}
-\label{fig:ibov:vol:20a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-3.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-6.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-IBOV-vol-9.pdf}
-\end{figure}
-
-{\footnotesize
-\textbf{Note for Figures \ref{fig:ibov:vol:10a} - \ref{fig:ibov:vol:20a}}:
-In this Figures the benchmark is the Bovespa Index (IBOV).
-The Figures shows rolling window (250 days) annualized standard deviation for each portfolio with a specified rebalancing period and a number of asssets.
-Those Figures also show, in pointed lines, the standard deviation of the tracking error.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SP500 FIGS
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 20 assets without TC (SP500)}
-\label{fig:sp500:ret:20a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-1.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-4.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-7.pdf}
-
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 30 assets without TC (SP500)}
-\label{fig:sp500:ret:30a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-2.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-5.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-8.pdf}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Cumulative returns with 40 assets without TC (SP500)}
-\label{fig:sp500:ret:40a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-3.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-6.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-retac-9.pdf}
-\end{figure}
-
-{\footnotesize
-\textbf{Note for Figures \ref{fig:sp500:ret:20a} - \ref{fig:sp500:ret:40a}}:
-In this Figures the benchmark is the SP500 Index (SP500).
-The Figures shows cumulative returns of each portfolio with a specified rebalancing period and a number of asssets.
-Those Figures also show in pointed lines the difference between those cumulative returns and the index.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SP500 VOL
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 20 assets (SP500)}
-\label{fig:sp500:vol:20a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-1.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-4.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-7.pdf}
-
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 30 assets (SP500)}
-\label{fig:sp500:vol:30a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-2.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-5.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-8.pdf}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\caption{Volatility of returns with 40 assets (SP500)}
-\label{fig:sp500:vol:40a}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-3.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-6.pdf}
-\includegraphics[width=.9\linewidth, height=7cm]{./figs/fig-SP500-vol-9.pdf}
-\end{figure}
-
-{\footnotesize
-\textbf{Note for Figures \ref{fig:sp500:vol:20a} - \ref{fig:sp500:vol:40a}}:
-In this Figures the benchmark is the SP500 Index (SP500).
-The Figures shows rolling window (250 days) annualized standard deviation for each portfolio with a specified rebalancing period and a number of asssets.
-Those Figures also show, in pointed lines, the standard deviation of the tracking error.}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Refrences
 \clearpage
 \section*{References}
 \bibliographystyle{authordate3} % bibliography style
-\bibliography{./utils/refs} % References file
+\bibliography{./refs} % References file
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
