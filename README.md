@@ -11,13 +11,13 @@ The pdf file is in [here](./it-featsel.pdf)
 
 ## TODO
 
-- notes on tables
-- notes on figures
-- review Abstract
-- review 1- Introduction
-- review 2- Basic Definitions
-- review 3- Feature Selection Algorithms
-- review 4- The Experiment
-- review 5- Results
-- review 6- Conclusion
+- [] notes on tables
+- [] notes on figures
+- [] review Abstract
+- [] review 1- Introduction
+- [] review 2- Basic Definitions
+- [] review 3- Feature Selection Algorithms
+- [] review 4- The Experiment
+- [] review 5- Results
+- [] review 6- Conclusion
 
