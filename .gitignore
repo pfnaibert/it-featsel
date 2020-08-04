@@ -10,3 +10,11 @@ deprecated-tex/
 DOCS/
 LIT/
 
+*.aux
+*.log
+*.out
+*.gz
+
+*.blg
+*.bbl
+
