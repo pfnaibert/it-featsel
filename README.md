@@ -1,9 +1,9 @@
-title: "Index Tracking with Feature Selection" 
+Index Tracking with Feature Selection
 =======
 
 `r format(Sys.time(), "%d, %B, %Y")`
 
-Paulo Ferreira Naibert
+### Paulo Ferreira Naibert
 
 ## Description
 
