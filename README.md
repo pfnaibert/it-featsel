@@ -9,7 +9,7 @@ Index Tracking with Feature Selection
 
 This repository contains the files of my paper (jointly with João Frois Caldeira) Index Tracking with Feature Selection.
 
-# # File
+## File
 
 The pdf file is in [here](./it-featsel.pdf)
 
