@@ -1,15 +1,5 @@
----
-title: Index Tracking with Feature Selection
-author: Paulo Ferreira Naibert
----
-
-
 Index Tracking with Feature Selection
 =======
-
-`r format(Sys.time(), "%d, %B, %Y")`
-
-### 
 
 ## Description
 
