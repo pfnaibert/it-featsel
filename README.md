@@ -1,17 +1,19 @@
---- 
 title: "Index Tracking with Feature Selection" 
-date: '`r format(Sys.time(), "%d, %B, %Y")`'
-author: "Paulo Ferreira Naibert"
---- 
-# Description
+=======
+
+`r format(Sys.time(), "%d, %B, %Y")`
+
+Paulo Ferreira Naibert
+
+## Description
 
 This repository contains the files of my paper (jointly with João Frois Caldeira) Index Tracking with Feature Selection.
 
-# File
+# # File
 
 The pdf file is in [here](./it-featsel.pdf)
 
-# TODO
+## TODO
 
 - notes on tables
 - notes on figures
